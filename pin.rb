@@ -1,5 +1,6 @@
 #最大スコアを設定
 class Max_Pins
+  
   def initialize(score,frame, throw_number)
     @score = score
     @frame = frame
