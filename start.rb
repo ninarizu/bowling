@@ -5,7 +5,7 @@ bounases = []
 bounas_scores = []
 
 #各フレームのスコアを作成
-require './get_pin.rb'
+require './pin.rb'
 max_frame.each do |frame|
   score = []
   #最大投球数
