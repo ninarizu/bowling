@@ -7,8 +7,8 @@ class MaxPin
     @throw_number = throw_number
   end
   
-  def last_frame?(frame)
-    return frame == 10
+  def last_frame?
+    frame == 10
   end
   
   def build_max_pins(score, frame, throw_number)
@@ -50,7 +50,7 @@ class Pins
     
     max_throw_number.each do |throw_number| 
       
-      max_pin = Max_Pins.new(score, frame, throw_number)
+      max_pin = MaxPin.new(score, frame, throw_number)
       max_get_pin = max_pin.build_max_pins(score, frame, throw_number)
       max_pins = max_get_pin == nil ? 0 : max_get_pin
       pin = rand(0..max_pins) #倒したピンの本数
