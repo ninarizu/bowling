@@ -7,34 +7,14 @@ class MaxPin
     @throw_number = throw_number
   end
   
-  def last_frame?
-    frame == 10
-  end
-  
+  MAX_PIN = 10
   def build_max_pins(score, frame, throw_number)
-    max_pins = 10
-    #ストライク時の得点
-    strike_score = 10
- 
-    unless last_frame?(frame)
-      if throw_number == 1 && score.sum == strike_score
-        return max_pins = 0
-      else
-        return max_pins -= score.sum
-      end
-    end
-      
-    if last_frame?(frame) #フレーム10の対応
-      if throw_number == 3 && score.sum < max_pins
-        return max_pins = 0
-      elsif throw_number == 3 && score.sum == max_pins
-        return max_pins = 10
-      elsif throw_number < 3
-        return max_pins = (max_pins - score.sum)
-      end
-    end
-    
-    return max_pins if score.nil?  
+    # 最終フレーム以外(ストライク時は10-10 = 0となるので問題なし)
+    return MAX_PIN - score.sum unless @frame == 10
+    # 最終フレーム(1-2投目 ※下記はすべて最終フレームが入る)
+    return MAX_PIN - score.sum if throw_number < 3
+    # 最終フレーム(3投目)
+    return MAX_PIN if throw_number == 3
   end
 end
 
